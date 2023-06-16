@@ -1,0 +1,13 @@
+#이미지 겹치기
+
+# 이미지 로드
+image = plt.imread('your_image_path.jpg')
+
+# 히트맵 데이터 생성 (임의의 예시)
+heatmap_data = np.random.rand(image.shape[0], image.shape[1])
+
+# 히트맵 그리기
+plt.imshow(image)
+plt.imshow(heatmap_data, cmap='hot', alpha=0.5)  # 히트맵을 이미지 위에 겹쳐 그립니다.
+plt.colorbar()  # 히트맵의 색상 막대기를 표시합니다.
+plt.show()

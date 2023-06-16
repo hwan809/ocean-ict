@@ -1,0 +1,16 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+
+
+df = pd.read_csv('ocean-ict/fukushima-dataset/after_measurements_diff_lal_long_1.csv')
+
+df1 = df[(df['latitude']<=37.5)&(df['latitude']>=37.23)&(df['longitude']>=140.9)]
+df2 = df1.round(3)
+
+df3 = df2.drop_duplicates(subset='longitude',keep='last')
+
+
+data=df3.pivot(index='longitude',columns='latitude',values='value')
+sns.heatmap(data,cmap='RdYlGn_r',vmax=350,vmin=100)
+plt.show()

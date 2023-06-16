@@ -1,0 +1,15 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# 데이터 불러오기
+
+flights = sns.load_dataset('flights')
+
+# 데이터 피벗하기
+
+data = flights.pivot(index='month', columns='year', values='passengers')
+
+# heatmap 그리기
+
+sns.heatmap(data,cmap='Reds',vmax=600,vmin=30)
+plt.show()
