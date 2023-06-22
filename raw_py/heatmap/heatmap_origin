@@ -1,0 +1,15 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+
+
+df = pd.read_csv('fukushima-dataset/after_measurements_diff_lal_long_1.csv')
+
+df = df.round(2)
+
+df = df.drop_duplicates(subset='longitude',keep='last')
+
+
+data=df.pivot(index='longitude',columns='latitude',values='value')
+sns.heatmap(data,cmap='RdYlGn_r',vmax=350,vmin=100)
+plt.show()
